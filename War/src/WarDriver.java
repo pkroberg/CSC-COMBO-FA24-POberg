@@ -6,11 +6,21 @@ public class WarDriver {
 	
 		Deck deck = new Deck();
 		
-		deck.print();
+//		deck.print();
 		
 		deck.shuffle();
+		Deck p1Deck = deck.subdeck(0, 25);
+		Deck p2Deck = deck.subdeck(26, 51);
 		
-		deck.print();
+		p1Deck.print();
+		p1Deck.selectionSort();
+		p1Deck.print();
+		
+//		deck.print();
+//		
+//		deck.selectionSort();
+//		
+//		deck.print();
 		
 //		Card target = new Card(12, 3);
 //		System.out.println(search(cards, target));

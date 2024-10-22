@@ -20,6 +20,14 @@ public class Deck {
 		this.cards = new Card[n]; 
 	}
 	
+	public Deck subdeck(int low, int high) {
+		Deck sub = new Deck(high - low + 1);
+		for(int i = 0; i < sub.cards.length; i++) {
+			sub.cards[i] = this.cards[low + i];
+		}
+		return sub;
+	}
+	
 	public Card[] getCards() {
 		return this.cards;
 	}
@@ -29,6 +37,26 @@ public class Deck {
 			int num = randomInt(i, cards.length);
 			swapCards(i, num);
 		}
+	}
+	
+	public void selectionSort() {
+		//find lowest card at or to the right of i
+		//swap that card with the card at i
+		for(int i = 0; i < cards.length; i++) {
+			int lowest = indexLowest(i, cards.length);
+			swapCards(i, lowest);
+		}
+	}
+	
+	private int indexLowest(int low, int high) {
+		//find the lowest card between low and high
+		int lowest = low;
+		for (int i = low; i < high; i++) {
+			if(cards[i].compareTo(cards[lowest]) < 0) {
+				lowest = i;
+			}
+		}
+		return lowest;
 	}
 	
 	private static int randomInt(int low, int high) {
